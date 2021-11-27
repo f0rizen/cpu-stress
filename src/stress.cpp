@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
             ++cur;
             auto vec = getstats();
             std::cout << std::flush << cur << " " << vec[0] << " " << vec[1]
-                      << " " << vec[2] << std::setw(3) << '\r';
+                      << " " << vec[2] << std::setw(4) << '\r';
         }
     }
     return 0;
