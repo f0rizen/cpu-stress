@@ -44,8 +44,8 @@ int main(int argc, char *argv[]) {
             get_primes(cur);
             ++cur;
             auto vec = getstats();
-            std::cout << std::flush << std::setw(3) << cur << " " << vec[0]
-                      << " " << vec[1] << " " << vec[2] << "\r";
+            std::cout << std::flush << cur << " " << vec[0] << " " << vec[1]
+                      << " " << vec[2] << std::setw(3) << '\r';
         }
     }
     return 0;
