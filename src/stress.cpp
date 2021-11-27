@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
     }
     std::cout << "Running on " << th << " OpenMP thread(s)\n";
     std::cout << "Ctrl + c to stop\n";
-    __int128 cur = 1000000;
+    __int128 cur = 2000000;
 #pragma omp parallel
     {
         while (cur < INT128_MAX) {
