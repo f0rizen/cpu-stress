@@ -1,4 +1,5 @@
 #include "argv.hpp"
+#include "help.hpp"
 #include "int128.hpp"
 #include "loadavg.hpp"
 #include "primes.hpp"
@@ -18,6 +19,10 @@ bool isnumber(std::string str) {
 
 int main(int argc, char *argv[]) {
     argvparse flags(argc, argv);
+    if (flags.flagExists("--help")) {
+        gethelp();
+        exit(0);
+    }
     int th = 0;
     if (!flags.flagExists("--threads")) {
         th = omp_get_max_threads();
