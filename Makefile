@@ -1,5 +1,5 @@
 SHELL=/bin/bash
-CPPFLAGS = -Wall -Wextra -std=gnu++17
+CPPFLAGS = -Wall -Wextra -std=c++11
 all:
 	$(RM) -r bin
 	mkdir bin
