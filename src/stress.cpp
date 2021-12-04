@@ -37,8 +37,8 @@ int main(int argc, char *argv[]) {
             auto end = timer.now();
             auto time = static_cast<std::chrono::duration<double>>(end - start);
             std::cout << std::flush << "cur = " << cur
-                      << "; loadavg: " << vec[0] << " " << vec[1] << " "
-                      << vec[2] << "; running time: " << time.count()
+                      << " | loadavg: " << vec[0] << " " << vec[1] << " "
+                      << vec[2] << " | running time: " << time.count()
                       << std::setw(4) << '\r';
         }
     }
