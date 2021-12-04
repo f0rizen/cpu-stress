@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
             std::cout << "--threads <number of threads to use>\n";
             exit(1);
         }
-        if (!isnumber(threads)) {
+        if (!std::all_of(threads.begin(), threads.end(), ::isdigit)) {
             std::cout << "--threads <NUMBER of threads to use>\n";
             exit(1);
         }
@@ -36,10 +36,10 @@ int main(int argc, char *argv[]) {
             auto vec = getstats();
             auto end = timer.now();
             auto time = static_cast<std::chrono::duration<double>>(end - start);
-            std::cout << std::flush << "cur = " << cur << "; loadavg: " << vec[0]
-                      << " " << vec[1] << " " << vec[2]
-                      << "; running time: " << time.count() << std::setw(4)
-                      << '\r';
+            std::cout << std::flush << "cur = " << cur
+                      << "; loadavg: " << vec[0] << " " << vec[1] << " "
+                      << vec[2] << "; running time: " << time.count()
+                      << std::setw(4) << '\r';
         }
     }
     return 0;
