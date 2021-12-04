@@ -1,21 +1,4 @@
-#include "argv.hpp"
-#include "help.hpp"
-#include "int128.hpp"
-#include "loadavg.hpp"
-#include "primes.hpp"
-#include <algorithm>
-#include <iomanip>
-#include <omp.h>
-#include <string>
-
-static const __uint128_t UINT128_MAX = __uint128_t(__int128_t(-1L));
-static const __int128_t INT128_MAX = UINT128_MAX >> 1;
-
-bool isnumber(std::string str) {
-    for (int i = 0; i < (int)str.size(); ++i)
-        if (str[i] < '0' || str[i] > '9') return false;
-    return true;
-}
+#include "stress.hpp"
 
 int main(int argc, char *argv[]) {
     argvparse flags(argc, argv);
@@ -43,14 +26,20 @@ int main(int argc, char *argv[]) {
     std::cout << "Running on " << th << " OpenMP thread(s)\n";
     std::cout << "Ctrl + c to stop\n";
     __int128 cur = 2000000;
+    std::chrono::steady_clock timer;
+    auto start = timer.now();
 #pragma omp parallel
     {
         while (cur < INT128_MAX) {
             get_primes(cur);
             ++cur;
             auto vec = getstats();
-            std::cout << std::flush << cur << " " << vec[0] << " " << vec[1]
-                      << " " << vec[2] << std::setw(4) << '\r';
+            auto end = timer.now();
+            auto time = static_cast<std::chrono::duration<double>>(end - start);
+            std::cout << std::flush << "cur = " << cur << "; loadavg: " << vec[0]
+                      << " " << vec[1] << " " << vec[2]
+                      << "; running time: " << time.count() << std::setw(4)
+                      << '\r';
         }
     }
     return 0;
