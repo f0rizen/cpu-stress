@@ -42,6 +42,6 @@ int main(int argc, char *argv[]) {
                       << std::setw(4) << '\r';
         }
     }
-    std::cout << "Exiting the program because cur is more than INT128_MAX\n";
+    std::cout << "Exiting the program because cur is greater than INT128_MAX\n";
     return 0;
 }
