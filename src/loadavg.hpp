@@ -1,6 +1,5 @@
-#include <iostream>
+#include <cstdlib>
 #include <sys/types.h>
-#include <unistd.h>
 #include <vector>
 
 std::vector<double> getstats() {

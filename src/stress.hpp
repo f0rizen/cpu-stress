@@ -1,9 +1,7 @@
 #include "argv.hpp"
-#include "help.hpp"
 #include "int128.hpp"
 #include "loadavg.hpp"
 #include "primes.hpp"
-#include <algorithm>
 #include <chrono>
 #include <iomanip>
 #include <omp.h>
